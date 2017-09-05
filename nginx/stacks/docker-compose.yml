@@ -1,0 +1,46 @@
+##########################################################################################
+###### Docker Stack which includes all nginx related services.                      ######
+######                                                                              ######
+###### REQUIREMENTS:                                                                ######
+###### create Docker secrets first (secrets/create-docker-secrets.sh)               ######
+######                                                                              ######
+###### Deploy the services in the stack using a command like this:                  ######
+###### docker stack deploy --compose-file docker-compose.yml nginx                  ######
+##########################################################################################
+
+#docker compose version. Latest version is required
+version: "3.1"
+
+#service definitions
+services:
+  webserver:
+    image: nginx
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 2048M
+      placement:
+        constraints: [node.role == manager]
+    ports:
+      - "3334:443"
+    secrets:
+      - site.key
+      - site.crt
+      - site.conf
+    volumes:
+      - ${LOCAL_VOLUME_PATH}:${REMOTE_VOLUME_PATH}
+    command:
+      sh -c "ln -s /run/secrets/site.conf /etc/nginx/conf.d/site.conf && exec nginx -g 'daemon off;'"
+
+#docker secrets
+secrets:
+  site.key:
+    external: true
+  site.crt:
+    external: true
+  site.conf:
+    external: true
