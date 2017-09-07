@@ -1,7 +1,17 @@
-# docker-security-tryouts
-A repo to try-out some Docker security related aspects to share with the community.
+# Docker security use cases
+A repository to try out some Docker security related aspects (use cases) to share with the community. The main motivation to setup this initiative is to address
+security related risks from within a large companies' perspective. Security is an important concern especially where companies want to keep in control of stuff.
+Having (some or all) security aspects in place helps to make a decision whether to use Docker technology on a larger scale.
 
-Implemented samples so far:
+All use cases should be very easy to understand to fully focus on the security related aspects.
+
+# Requirements
+Global requirements for all use cases:
+* Linux
+* Docker 17.x+
+* Docker compose 1.8.x+
+
+Implemented use cases so far:
 
 * [nginx samples main page](nginx/index.md)
 * [nginx apparmor to restrict rights in containers](nginx/apparmor/)
