@@ -1,3 +1,5 @@
+#!/bin/bash
+
 openssl req \
           -new -key "root-ca.key" \
           -out "root-ca.csr" -sha256 \

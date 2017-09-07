@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 # execute this file using . ./deployStack.sh (note the first dot)
 WWW=www1
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ./create-root-key.sh
 ./generate-csr.sh
 ./sign-certificate.sh

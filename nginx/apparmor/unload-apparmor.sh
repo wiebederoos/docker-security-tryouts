@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # stop apparmor
 sudo /etc/init.d/apparmor stop
 # unload the profile
